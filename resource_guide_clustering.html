@@ -1,0 +1,64 @@
+<h2>The Three Most Popular Clustering Algos are?</h2>
+<br>
+<dl>
+<dt>Partitional Clustering</dt> <dd>Divides the data objects into Non-Overlabping groups</dd>
+<dd>These techniques require the user to specify the number of clusters (k).</dd>
+<dd>This includes k-means and k-clusters </dd>
+<ul> Nondeterministic, meaning they could produce different results from two separate runs even if the runs were based on the same input.</ul>
+    <ul>Strengths:
+        <ul>They are not well suited for clusters with complex shapes and different sizes</ul>
+        <ul>They break down when used with clusters of different densities</ul>
+    </ul>
+    <ul>Weaknesses:
+        <ul>They’re not well suited for clusters with complex shapes and different sizes</ul>
+        <ul>They break down when used with clusters of different densities</ul>
+    </ul>
+<br>
+<dt>Hierachical Clustering</dt> <dd>creates cluster asignments by building a hierarchy. This is implemented by either a bottom-up or top Down Approach</dd>
+    <dd><strong>Agglomerative Clustering :</strong> is the bottom-up approach. It mergtes two points that re the most similar unitl all the points have been merged into a singular cluster.</dd>
+    <dd><strong>Divisive clustering</strong> : is the top-down approach. It starts with all points  as one cluster and splits the least similar clusters at each step unil only a single data point remains </dd>
+    <ul>Strenghts:
+        <ul>They often reveal finer details about the realtionships between data objects</ul>
+        <ul>they provide an interpretable dendogram <a href ="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/UPGMA_Dendrogram_Hierarchical.svg/1280px-UPGMA_Dendrogram_Hierarchical.svg.png">link</a></ul>
+    <ul>Weaknesses:
+        <ul>They are computationally expensive</ul>
+        <ul>They are sensative to noise and outliers</ul>
+    </ul>
+    <br>
+    <dt>Density Based Clustering</dt><dd> determines cluster assignments based on the density of data poins in a region. Cluster are assigned where there are high densities of data points seperated by low density regions </dd>
+    <dd>Unlike the other clustering categories, this approach does not require the user to specify the number of clusters.</dd>
+    <dd>Instead, there is a distance-based parameter that actts as a tunable threshold. This threshold determines how close points must be to be consider a cluster member. </dd>
+    <br>
+   <ul>Examples: 
+        <ul> Density-Based Spatial Clustering of Applications with Noise or DBSCAN <a href=https://scikit-learn.org/stable/modules/clustering.html#dbscan>link</a></ul>
+        <ul>Ordering Points to Identify the Clustering Structure or OPTICS <a href ="https://scikit-learn.org/stable/modules/clustering.html#optics">link</a></ul>
+    <br>
+    <li>Strenghts:
+        <ul>They often reveal finer details about the realtionships between data objects</ul>
+        <ul>they provide an interpretable dendogram</ul>
+    </li>
+    <li>Weaknesses:
+        <ul>They are computationally expensive</ul>
+        <ul>They are sensative to noise and outliers</ul></li>
+
+</ul>
+<h3> Resource Guide (<a href="https://scikit-learn.org/stable/modules/clustering.html">link</a>) </h3>
+<p> Clustering of unlabeled data can be performed with sklearn.cluster <br> Each clustering algo comes in two variants. <strong>1)</strong> a class that implements the <strong>fit</strong> method to learn the clusters on train data, and <strong>2)</strong> a function, that, given train data, returns an array of integer labeles corresponding to the different clusters. For the classs, the labelss over the training data can be found in labels_ attribute.</p>
+
+<h3> K-means (<a href="https://scikit-learn.org/stable/modules/clustering.html#kmeans">link</a>)</h3>
+<p> The k-means algorithm clusters data by trying to seperate samples in n groupss of equal variance, minimizing a criterion known as the intertia or within-cluster sum-of-squares. The algorythm requires the number off clusters to be specified. It scales well with large number of samples and has been used across a large range of application areas in many different fields. <br><br>
+    The k means algorythm divides a set of <strong> N</strong> samples <strong>X</strong> into <strong> K</strong> disjoint clusters <strong> C</strong>, each described by the mean <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x3BC;</mi>
+    <mi>j</mi>
+  </msub>
+</math> of the samples in the cluster. The means are commonly called the cluster "centroids"; note that they are not, in general, points from <strong> X</strong>, although they live in the same space.
+    <br> <br>
+    The K-meeans algorithm aims to choose centroids that minimize the <strong>inertia</strong> or <strong> within-cluster sum-of-squares criterion</strong>.<br>
+
+    \sum_{i=0}^{n}\min_{\mu_j \in C}(||x_i - \mu_j||^2)
+<br> <br>
+   <p>Intertia can be recognized as a measure of how internally coherent clusters are (<i>are logically connected and complete</i>). It sufferes from various drawbacks like:</p>
+    <li> Interia makes the assumption that clusters are convex (<i>all clusters lie within the same same range</i>)  and are isotropic (<i>I DONT KNOW what this means in Probability - best guess - that all the clusters are within a uniform range</i>)
+    <li> Inertia is non a normalized metric: we just know that lower values are better and zero is optimal. But in very high-dimmentional spaces, Euclidean distancces (</i>measurable distance between two points</i>) tend to become inflatted (this is is an instance of the so-called "curse of dimmensionality").</li> <li>Running a dimensionality reduction aldorythm such as the <strong>Principal Component Analysis(PCA)</strong>(<a href='https://scikit-learn.org/stable/modules/decomposition.html#pca'>(link)<a/>  prior to k-means clustering can alleviate this promblem and speed up computations</li>
+<br><br>
